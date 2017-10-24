@@ -1,0 +1,45 @@
+extends layout
+
+block content
+  .main.container
+    .row
+      .col.col-xs-12.col-md-9.col-xl-8
+        h3 Photos
+        #lg-fade
+          each val in photos
+            a(href= '../images/uploads/'+val['filename'] alt= val['originalname'] id= val['_id'] data-fancybox="gallery-group" data-caption= '<p class="caption-text">'+val['originalname'].substring(0,val['originalname'].indexOf('.'))+'<br/>tags: '+val['tags']+'</p>')
+              img(src= '../images/uploads/thumbs/'+val['filename'] alt= val['originalname'] id= val['_id']+'-thumbnail') 
+
+      .col.col-xs-12.col-md-3.col-xl-4
+        .tags
+          p All tags in this photo set (select tags to filter photos)
+        each tag in tags
+          script.
+            // Function on a Tag type button click adds that tag to the tags filter field input
+            var addTag = function(tagButton) {
+              // tagInput is the hidden/invisible text input type where the tags are collected for filtering
+              const tagInput = document.getElementById('tagInput'),
+                    theButton = document.getElementById(tagButton.id);
+
+              if(theButton.className.indexOf('outline')) {
+                // Outline = NOT Selected
+                theButton.className = "btn btn-outline-secondary";
+                tagInput.setAttribute('value',tagInput.value + ' ' + tagButton.id);
+              } else {
+                // NO Outline = Selected
+                theButton.className = "btn btn-secondary";
+                const dex = tagInput.value.indexOf(tagButton.id);
+                const front = tagInput.value.substring(0, dex);
+                const back = tagInput.value.substring(dex+tagButton.id.length);
+                tagInput.setAttribute('value', front+back);
+              }
+            }//end of addTag func
+          button.btn.btn-secondary(type='button' id=tag onclick=`addTag( ${tag} )` ) #{tag}
+        p
+          form(method='POST' action='/')
+            input.form-control(id='tagInput' type='text' placeholder='enter tags' name='tagList')
+            button.btn.btn-secondary(type='submit') Filter by tags
+        p
+          form(method='POST' action='/')
+            input.form-control(id='filterReset' type='hidden' name='tagList')
+            button.btn.btn-secondary(type='submit') Show all images
