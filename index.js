@@ -1,3 +1,4 @@
+var compression = require('compression')
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
@@ -8,6 +9,12 @@ var app = express();
 mongoose.connect("mongodb://localhost:27017/paparanni");
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Database connection error:'));
+// Use native promises
+mongoose.Promise = global.Promise;
+assert.equal(query.exec().constructor, global.Promise);
+
+// Use gzip compression for serving files (where available/supported)
+app.use(compression())
 
 app.use(session({
   secret: 'sekret',
