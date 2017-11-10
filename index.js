@@ -12,6 +12,7 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Database connection error:'));
 // Use native promises
 mongoose.Promise = global.Promise;
+// assert.equal(query.exec().constructor, global.Promise);
 
 // Use gzip compression for serving files (where available/supported)
 app.use(compression())
