@@ -10,6 +10,6 @@ nav.navbar.navbar-dark
       if currentUser
         a.btn.nav-item.nav-link(href='upload') Upload Photos
         a.btn.nav-item.nav-link(href='delete') Delete Photos
-        div
+        a(href='profile')
           img.avatar.img-circle.hidden-xs-down(src='/images/avatar.png', alt='avatar')
-          a.btn.btn-light.pull-md-right(href='/logout') Log out
+        a.btn.btn-light.pull-md-right(href='/logout') Log out

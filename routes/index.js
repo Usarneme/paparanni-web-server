@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
   },
   filename: function (req, file, cb) {
     // Limit the filename to 4 characters of the original name plus the date string
-    var toPeriod = file.originalname.indexOf('.')
+    var toPeriod = file.originalname.lastIndexOf('.')
     if(toPeriod >= 4) {
       cb(null, file.originalname.substring(0,4) + '-' + Date.now() + file.originalname.substring(toPeriod))
     } else {
