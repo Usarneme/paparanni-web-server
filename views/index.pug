@@ -1,16 +1,16 @@
 extends layout
 
 block content
-  .main.container
+  .main-container
     .row
-      .col.col-xs-12.col-md-9.col-xl-8
-        h3 Photos
+      .col.photos-container
+        h3 Paparanni Photo Blog
         #lg-fade
           each val in photos
             a(href= '../images/uploads/'+val['filename'] alt= val['originalname'] id= val['_id'] data-fancybox="gallery-group" data-caption= '<p class="caption-text">'+val['originalname'].substring(0,val['originalname'].indexOf('.'))+'<br/>tags: '+val['tags']+'</p>')
               img(src= '../images/uploads/thumbs/'+val['filename'] alt= val['originalname'] id= val['_id']+'-thumbnail') 
 
-      .col.col-xs-12.col-md-3.col-xl-4
+      .col.tags-container
         .tags
           p All tags in this photo set (select tags to filter photos)
         each tag in tags
@@ -35,11 +35,12 @@ block content
               }
             }//end of addTag func
           button.btn.btn-secondary(type='button' id=tag onclick=`addTag( ${tag} )` ) #{tag}
-        p
-          form(method='POST' action='/')
-            input.form-control(id='tagInput' type='text' placeholder='enter tags' name='tagList')
-            button.btn.btn-secondary(type='submit') Filter by tags
-        p
-          form(method='POST' action='/')
-            input.form-control(id='filterReset' type='hidden' name='tagList')
-            button.btn.btn-secondary(type='submit') Show all images
+        .filter-buttons
+          p
+            form(method='POST' action='/')
+              input.form-control(id='tagInput' type='text' placeholder='enter tags' name='tagList')
+              button.btn.btn-secondary(type='submit') Filter
+          p
+            form(method='POST' action='/')
+              input.form-control(id='filterReset' type='hidden' name='tagList')
+              button.btn.btn-secondary(type='submit') Show all

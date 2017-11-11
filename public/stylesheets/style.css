@@ -4,6 +4,10 @@
 	box-sizing: border-box;
 	border-radius: 0;
 	font-family: 'Quicksand', sans-serif; 
+	/* align-items: center;
+    align-self: center;
+    justify-content: center;
+	text-align: center; */
 }
 
 /* 
@@ -19,6 +23,7 @@ font-family: 'Quicksand', sans-serif;
 
 body { 
 	background: #fff;
+	text-align: center;
 }
 
 p {
@@ -29,47 +34,17 @@ p {
 	color: #fff;
 }
 
-img {
-	width: 95vw;
-	margin: auto;
-}
-
-.navbar-toggler {
-	color: #fff;
-}
-
-.camera-logo,
-.name-logo {
-	display: inline-block;
-}
-	
-.camera-logo {
-	width: 90px;
-	height: 150px;
-	background: url('../images/camera.svg');
-	background-size: 100% 100%;
-	margin: -25px -30px -67px 0px;
-}
-
-.name-logo {
-	width: 200px;
-	height: 175px;
-	background: url('../images/logo.svg');
-	background-size: 100% 100%;
-	margin: -60px -30px;
+img { 
+	object-fit: contain;
 }
 
 a {
-	align-items: center;
-    align-self: center;
-    justify-content: center;
-	text-align: center;
-	font-weight: 400;
-	color: #3c3c3c!important;
+	color: initial;
+	text-decoration: none;
 }
 
 a:hover {
-	color: rgba(49,176,213, .7);
+	/* color: rgba(49,176,213, .7); */
 }
 
 /* Component Styles */
@@ -77,19 +52,69 @@ a:hover {
 	max-width: 100%!important;
 }
 
+.navbar {
+	margin: 0;
+	width: 100%;
+	height: 104px;
+	background: #3c3c3c;
+	display: flex;
+	justify-content: space-between;
+}
+
+.nav-item {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	text-align: center;
+	align-items:center;
+	justify-content: center;
+	align-self: center;
+}
+
+/* .nav-item a {
+	color: #ffe;	
+} */
+
+.camera-logo,
+.name-logo {
+	height: 60%;
+	width: 60%;
+}
+
+.main-container {
+	min-height: calc(98vh - 104px);
+}
+	
 .row {
-	padding: 10px!important;
-	margin: 10px!important;
+	max-width: 100%;
+	overflow: hidden;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 30px;
+	display: flex;
+	flex-wrap: nowrap;
+	flex: 1 1 auto;
+	justify-content: space-around;
+}
+
+/* .col {
+	flex: 1 99%;
+} */
+
+.photos-container {
+	flex: 5 1 auto;
+}
+
+.tags-container {
+	/* flex: 1 1 auto; */
 }
 
 .profile h1 {
 	color: #3c3c3c;
 }
 
-.left-about,
-.right-about {
-	margin: 10px;
-	padding: 10px;
+.about-container {
+	padding: 80px;
 }
 
 ul#photosContainer,
@@ -98,41 +123,70 @@ ul#photosContainer,
 	display: flex;
 	flex-wrap: wrap;
 }
+
 li.photo {
 	flex-grow: 1;
 	padding: 10px;
 	margin: 10px;
 }
-.navbar {
-	padding: 1rem 0;
-	background: #3c3c3c;
-}
-.main {
-	color: #fff;
-	min-height: calc(100vh - 34px);
-}
+
 .tags {
 	padding-top: 20px;
 }
+
 #tagInput {
 	visibility: hidden;
 	display: none;
 }
+
 #lg-fade {
-	display: flex;
-    flex-wrap: wrap;
-	justify-content: center;
+	/* display: flex; */
+	/* flex-wrap: wrap;
+	align-items: center; */
+	margin: 25px;
 }
+
 #lg-fade > a {
 	padding: 5px;
+	min-width: 0; /* flexbox to contain image size */
 }
-.foot {
-	font-size: .85rem;
-	padding: .5rem 0;
-	color: rgba(255,255,255, .6);
+
+#lg-fade > a > img {
+	max-width: 100%; /*or width: 100%; if so the above line won't be required */
+    height: auto;
+}
+
+.filter-buttons {
+	display: flex;
+	text-align: center;
+	align-items:center;
+	justify-content: center;
+	align-self: center;
+}
+
+.footer {
+	margin: 0;
+    width: 100%;
+    height: 104px;
+    padding: 1rem 0;
+	background: #3c3c3c;
+	display: flex;
+	text-align: center;
+	align-items:center;
+	justify-content: center;
+	align-self: center;
+}
+
+.footer p {
+	color: #ffe;	
 }
 
 /* Modifier Styles */
+
+.hidden {
+	visibility: hidden;
+	display: none;
+}
 
 .nav-items .nav-link {
 	margin: 0 1rem;
@@ -216,39 +270,11 @@ li.photo {
 /* Media Queries */
 
 @media (min-width: 0) and (max-width: 47em) {
-	.nav-items .nav-item {
-		float: none;
-	}
-	.nav-items .nav-link  {
-		padding: .65rem 0;
-		display: block;
-	}
-	.nav-items {
-		padding: 1rem 0;
-		clear: left;
-	}
-	.navbar .btn {
-		margin-left: 1rem;
-	}
-}
-
-@media (min-width: 495px) {
-	img {
-		width: initial;
-	}	
 }
 
 @media (min-width: 48em) { 
-	.navbar {
-		min-height: 70px;
-	}
-	.navbar-nav .container {
-		display: -webkit-flex;
-		display: flex;
-	}
-	.nav-items {
-		margin-right: auto;
-		margin-left: auto;
-	}
+	/* .col {
+		flex: 1;
+	} */
 }
 
