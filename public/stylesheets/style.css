@@ -26,8 +26,15 @@ body {
 	text-align: center;
 }
 
+h3 {
+	margin-top: 35px;
+}
+
 p {
-	color: #3c3c3c;	
+	color: #3c3c3c;
+	max-width: 70%;
+	text-align: center;
+	margin: 10px auto 5px;
 }
 
 .caption-text {
@@ -75,24 +82,14 @@ a:hover {
 	color: #ffe;	
 } */
 
-.camera-logo,
-.name-logo {
-	height: 100%;
-	width: 100%;
-}
-
 .camera-logo {
-	background: url('../images/camera_logo.svg');
-	background-size: 40%;
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
+	height: 45%;
+	width: 45%;
 }
 
 .name-logo {
-	background: url('../images/name_logo.svg');
-	background-size: 60%;
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
+	height: 85%;
+	width: 85%;
 }
 
 .main-container {
@@ -102,9 +99,7 @@ a:hover {
 .row {
 	max-width: 100%;
 	overflow: hidden;
-	margin-left: auto;
-	margin-right: auto;
-	padding: 30px;
+	padding: 3px;
 	display: flex;
 	flex-wrap: nowrap;
 	flex: 1 1 auto;
@@ -176,6 +171,7 @@ li.photo {
 	align-items:center;
 	justify-content: center;
 	align-self: center;
+	margin-top: 20px;
 }
 
 .footer {
