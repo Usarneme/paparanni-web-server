@@ -43,6 +43,7 @@ p {
 
 img { 
 	object-fit: contain;
+	width: 90vw;
 }
 
 a {
@@ -115,7 +116,7 @@ a:hover {
 }
 
 .tags-container {
-	/* flex: 1 1 auto; */
+	padding: 5px;
 }
 
 .profile h1 {
@@ -149,14 +150,14 @@ li.photo {
 }
 
 #lg-fade {
-	/* display: flex; */
-	/* flex-wrap: wrap;
-	align-items: center; */
-	margin: 25px;
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	justify-content: space-around;
 }
 
 #lg-fade > a {
-	padding: 5px;
+	padding: 1px;
 	min-width: 0; /* flexbox to contain image size */
 }
 
@@ -282,9 +283,26 @@ li.photo {
 @media (min-width: 0) and (max-width: 47em) {
 }
 
-@media (min-width: 48em) { 
-	/* .col {
-		flex: 1;
-	} */
+@media (min-width: 48em) { /* 768 */
+	#lg-fade > a {
+		width: 35vw;
+	}	
 }
 
+@media (min-width: 75em) { /* 1200 */
+	#lg-fade > a {
+		width: 27vw;
+	}
+	.tags-container {
+		padding: 15px;
+	}	
+}
+
+@media (min-width: 120em) { /* 1920 */
+	#lg-fade > a {
+		width: 22vw;
+	}
+	.tags-container {
+		padding: 25px;
+	}	
+}

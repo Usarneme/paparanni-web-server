@@ -4,7 +4,6 @@ block content
   .main-container
     .row
       .col.photos-container
-        h3 Paparanni Photo Blog
         #lg-fade
           each val in photos
             a(href= '../images/uploads/'+val['filename'] alt= val['originalname'] id= val['_id'] data-fancybox="gallery-group" data-caption= '<p class="caption-text">'+val['originalname'].substring(0,val['originalname'].indexOf('.'))+'<br/>tags: '+val['tags']+'</p>')
