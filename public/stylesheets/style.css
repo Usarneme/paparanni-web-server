@@ -77,8 +77,22 @@ a:hover {
 
 .camera-logo,
 .name-logo {
-	height: 60%;
-	width: 60%;
+	height: 100%;
+	width: 100%;
+}
+
+.camera-logo {
+	background: url('../images/camera_logo.svg');
+	background-size: 40%;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.name-logo {
+	background: url('../images/name_logo.svg');
+	background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
 }
 
 .main-container {
