@@ -1,9 +1,9 @@
 nav.navbar
-  a.nav-item(href='/')
+  a.nav-item.camera-link(href='/')
     img.camera-logo(src= '../images/camera_logo.svg' alt='Logo of a Camera')
-  a.nav-item(href='/')
-    img.name-logo(src= 'http://paparanni.com/images/name_logo.svg' alt='Logo of the name Paparanni')
-  .nav-item
+  a.nav-item.name-link(href='/')
+    img.name-logo(src= '../images/name_logo.svg' alt='Logo of the name Paparanni')
+  .nav-item.about-link
     a(href='about') About
   if currentUser
     a.nav-item(href='upload') Upload Photos

@@ -3,11 +3,10 @@ extends layout
 block content
   .main-container
     .row
-      .col.photos-container
-        #lg-fade
-          each val in photos
-            a(href= '../images/uploads/'+val['filename'] alt= val['originalname'] id= val['_id'] data-fancybox="gallery-group" data-caption= '<p class="caption-text">'+val['originalname'].substring(0,val['originalname'].indexOf('.'))+'<br/>tags: '+val['tags']+'</p>')
-              img(src= '../images/uploads/thumbs/'+val['filename'] alt= val['originalname'] id= val['_id']+'-thumbnail') 
+      #lg-fade.col.photos-container
+        each val in photos
+          a(href= '../images/uploads/'+val['filename'] alt= val['originalname'] id= val['_id'] data-fancybox="gallery-group" data-caption= '<p class="caption-text">'+val['originalname'].substring(0,val['originalname'].indexOf('.'))+'<br/>tags: '+val['tags']+'</p>')
+            img(src= '../images/uploads/thumbs/'+val['filename'] alt= val['originalname'] id= val['_id']+'-thumbnail') 
 
       .col.tags-container
         .tags
@@ -15,22 +14,23 @@ block content
         each tag in tags
           script.
             // Function on a Tag type button click adds that tag to the tags filter field input
-            var addTag = function(tagButton) {
+            let addTag = function(tagButton) {
               // tagInput is the hidden/invisible text input type where the tags are collected for filtering
               const tagInput = document.getElementById('tagInput'),
                     theButton = document.getElementById(tagButton.id);
 
-              if(theButton.className.indexOf('outline')) {
-                // Outline = NOT Selected
-                theButton.className = "btn btn-outline-secondary";
-                tagInput.setAttribute('value',tagInput.value + ' ' + tagButton.id);
-              } else {
-                // NO Outline = Selected
-                theButton.className = "btn btn-secondary";
+              if(theButton.classList.contains('btn-outline-secondary')) {
+                // Outline = Selected
+                theButton.classList.remove('btn-outline-secondary');
+                theButton.classList.add('btn-secondary');
                 const dex = tagInput.value.indexOf(tagButton.id);
                 const front = tagInput.value.substring(0, dex);
                 const back = tagInput.value.substring(dex+tagButton.id.length);
                 tagInput.setAttribute('value', front+back);
+              } else {
+                theButton.classList.remove('btn-secondary');
+                theButton.classList.add('btn-outline-secondary');
+                tagInput.setAttribute('value', tagInput.value + ' ' + tagButton.id);
               }
             }//end of addTag func
           button.btn.btn-secondary(type='button' id=tag onclick=`addTag( ${tag} )` ) #{tag}
