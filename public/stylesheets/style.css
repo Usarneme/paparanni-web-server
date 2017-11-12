@@ -3,7 +3,7 @@
 * {
 	box-sizing: border-box;
 	border-radius: 0;
-	font-family: 'Quicksand', sans-serif; 
+	font-family: 'Quicksand', sans-serif!important; 
 	/* align-items: center;
     align-self: center;
     justify-content: center;
@@ -125,6 +125,11 @@ a:hover {
 
 .about-container {
 	padding: 80px;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	align-items: center;
+	align-self: center;
 }
 
 ul#photosContainer,
