@@ -70,15 +70,14 @@ a:hover {
 
 .nav-item {
 	display: flex;
-	text-align: center;
-	justify-content: center;
 	align-items: center;
-	padding: 15px;
-	margin: 5px;
+	padding: 2px;
 }
 
+.nav-item,
 .nav-item a {
-	color: #ffe;	
+	color: #ffe;
+	padding-right: 17px;	
 }
 
 .camera-logo {
@@ -91,7 +90,8 @@ a:hover {
 
 .about-link {
 	flex: 1 50%;
-	text-align: right;
+	display: flex;
+	justify-content: flex-end;
 }
 
 .main-container {
@@ -151,9 +151,9 @@ li.photo {
 
 #lg-fade {
 	display: flex;
-	align-items: center;
+	/* align-items: center; */
 	flex-wrap: wrap;
-	justify-content: space-around;
+	/* justify-content: space-around; */
 }
 
 #lg-fade > a {
@@ -236,29 +236,35 @@ li.photo {
 	margin: 3px 3px 0;
 	float: left;
 }
+
 .icn-person {
 	font-size: 50px;
 	border-radius: 50%;
 	border: solid 2px;
 	padding: .5rem;
 }
+
 .avatar {
 	width: 35px;
 	margin-right: 18px;
 	border: solid 2px rgba(255,255,255, .75);
 }
+
 .options {
 	display: none;
 }
+
 .list-group-item:hover .options {
 	display: block;
 }
+
 .options .material-icons {
 	font-size: 1.25rem;
 	cursor: pointer;
 	margin-left: 1rem;
 	color: rgba(0,0,0, .35);
 }
+
 .options .material-icons:hover {
 	color: initial;
 }
@@ -274,29 +280,32 @@ li.photo {
 
 @media (min-width: 48em) { /* 768 */
 	#lg-fade > a {
-		width: 34vw;
+		/* width: 30vw; */
 	}
 	.row { 
 		flex-wrap: nowrap;
 	}
 	.nav-item {
-		padding: 9px;
-		justify-content: flex-end;		
+		padding: 7px 14px;
+		justify-content: flex-end;
 	}		
 }
 
 @media (min-width: 75em) { /* 1200 */
 	#lg-fade > a {
-		width: 27vw;
+		/* width: 27vw; */
 	}
 	.tags-container {
 		padding: 15px;
-	}	
+	}
+	.nav-item {
+		padding: 7px 20px;
+	}
 }
 
 @media (min-width: 120em) { /* 1920 */
 	#lg-fade > a {
-		width: 22vw;
+		/* width: 22vw; */
 	}
 	.tags-container {
 		padding: 25px;
