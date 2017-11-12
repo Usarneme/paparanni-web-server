@@ -71,10 +71,10 @@ a:hover {
 .nav-item {
 	display: flex;
 	text-align: center;
-	flex-direction: column;
 	justify-content: center;
+	align-items: center;
 	padding: 15px;
-	flex: 1;
+	margin: 5px;
 }
 
 .nav-item a {
@@ -83,11 +83,15 @@ a:hover {
 
 .camera-logo {
 	height: 45%;
-	width: 45%;
 }
 
 .name-logo {
 	height: 85%;
+}
+
+.about-link {
+	flex: 1 50%;
+	text-align: right;
 }
 
 .main-container {
@@ -202,9 +206,11 @@ li.photo {
 	border: 1px solid #3c3c3c;
 	text-transform: uppercase;
 	font-size: .95rem;
-	margin: 1px;
+	margin: 2px;
 	cursor: pointer;
-	border-radius: 5px;
+	border-radius: 10%;
+	padding: 8px;
+	font-weight: 400;
 }
 
 .btn-secondary:hover {
@@ -272,6 +278,10 @@ li.photo {
 	}
 	.row { 
 		flex-wrap: nowrap;
+	}
+	.nav-item {
+		padding: 9px;
+		justify-content: flex-end;		
 	}		
 }
 
