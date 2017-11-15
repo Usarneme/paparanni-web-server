@@ -93,7 +93,6 @@ i::before {
 .nav-item,
 .nav-item a {
 	color: #ffe;
-	padding-right: 17px;	
 }
 
 .camera-logo {
@@ -108,6 +107,16 @@ i::before {
 	flex: 1 50%;
 	display: flex;
 	justify-content: flex-end;
+}
+
+.clearfix {
+	content: "";
+	clear: both;
+}
+
+.admin {
+	visibility: hidden;
+	display: none;
 }
 
 .main-container {
@@ -184,6 +193,7 @@ li.photo {
 #lg-fade > a {
 	padding: 5px;
 	min-width: 0; /* flexbox to contain image size */
+	flex: 1 1 45%;
 }
 
 #lg-fade > a > img {
@@ -306,6 +316,10 @@ li.photo {
 @media (min-width: 48em) { /* 768 */
 	#lg-fade > a {
 		/* width: 30vw; */
+		flex: 1 1 30%;
+	}
+	.nav-item > a {
+		padding-right: 17px;		
 	}
 	.row { 
 		flex-wrap: nowrap;
@@ -319,6 +333,7 @@ li.photo {
 @media (min-width: 75em) { /* 1200 */
 	#lg-fade > a {
 		/* width: 27vw; */
+		flex: 1 1 22%;
 	}
 	.tags-container {
 		padding: 15px;
@@ -326,11 +341,16 @@ li.photo {
 	.nav-item {
 		padding: 7px 20px;
 	}
+	.admin {
+		visibility: visible;
+		display: flex;
+	}	
 }
 
 @media (min-width: 120em) { /* 1920 */
 	#lg-fade > a {
 		/* width: 22vw; */
+		flex: 1 1 19%;
 	}
 	.tags-container {
 		padding: 25px;

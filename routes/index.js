@@ -119,9 +119,12 @@ router.post('/upload', mid.requiresLogin, upload, function(req, res, next) {
       if(error) {
         return next(error);
       } else {
-        // After original file is uploaded, create thumbnails and preview images 
-        // `epg-prep path/to/photos` per https://github.com/timmydoza/express-photo-gallery
-        childProcess.exec('epg-prep public/images/uploads/', function(error, stdout, stderr) {
+        // After original file is uploaded, create thumbnail image
+        // pwd => paparanni-web-server/
+        // mogrify -resize 510 -quality 100 -path public/images/uploads/thumbs/ public/images/uploads/*.jpg
+        const fil = `mogrify -resize 510 -quality 100 -path public/images/uploads/thumbs/ public/images/uploads/${req.file.filename}`;
+        console.log('Thumbnail creator:',fil);
+        childProcess.exec(fil, function(error, stdout, stderr) {
           if(error) {
             var err = new Error('Failure to create thumbnails!');
             err.status = 500;
@@ -171,10 +174,9 @@ router.post('/delete', mid.requiresLogin, function(req, res, next) {
           return next(err);
         }
         // Successfully removed file from the database...
-        // Delete from folder the original, thumbnail and preview images
+        // Delete from folder the original and thumbnail images
         var photoPath = './public/images/uploads/'+req.body.filename;
         var thumbPath = './public/images/uploads/thumbs/'+req.body.filename;
-        var previewsPath = './public/images/uploads/previews/'+req.body.filename;
         fs.unlink(photoPath, function(err, result) {
           if(err) {
             return next(err);
@@ -183,13 +185,7 @@ router.post('/delete', mid.requiresLogin, function(req, res, next) {
               if(err) {
                 return next(err);
               } else {
-                fs.unlink(previewsPath, function(err, result) {
-                  if(err) {
-                    return next(err);
-                  } else {
-                    return res.redirect('/delete');
-                  }
-                })
+                return res.redirect('/delete');
               }
             })
           }
