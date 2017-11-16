@@ -1,12 +1,12 @@
 extends layout
 
 block content
-  .main.container
+  .main-container
     .row
-      .col-md-6.col-md-offset-3
+      .col.upload-container
         if msg
           p #{msg}
-        h1.display-4.m-b-2 Upload Photos
+        h2.display-4.m-b-2 Upload Photos
         form(method='POST' action='/upload' enctype='multipart/form-data')
           input.form-control(type='file' placeholder='select a file' name='upl')
           input.form-control(type='text' placeholder='enter tags' name='tags')

@@ -1,15 +1,16 @@
 extends layout
 
 block content
-  .main.container.clearfix.profile
-    .row
-      .col-md-8.col-md-offset-2
-        h1.display-4
-          img.avatar.img-circle.hidden-xs-down(src='/images/avatar.png', alt='avatar')
-          | #{name}
-    .row
-      .col-md-8.col-md-offset-2
-        a.btn.btn-info(href='upload') Upload Photos
-        a.btn.btn-secondary-outline(href='/delete') Delete photos
-        a.btn.btn-secondary-outline(href='/logout') Log out
-        
+  .main-container
+    .profile-container
+      .row
+        .col
+          h3
+            img.avatar.img-circle.hidden-xs-down(src='/images/avatar.png', alt='avatar')
+            | #{name}
+      .row
+        .col
+          a.btn.btn-info(href='upload') Upload Photos
+          a.btn.btn-secondary-outline(href='/delete') Delete photos
+          a.btn.btn-secondary-outline(href='/logout') Log out
+          

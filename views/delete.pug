@@ -1,14 +1,14 @@
 extends layout
 
 block content
-  .main.container
-    ul.photosContainer
+  .main-container
+    ul.photos-container
       if photos.length
         each val in photos
           li.photo
             img(src= 'images/uploads/'+val['filename'] width='220px' height='220px' alt= val['originalname'])
             p= 'photo name: '+val['originalname']
-            .tags
+            .photo-tags
               p= 'photo tags: '+val['tags']
             .delete
               form(method='POST' action='/delete')

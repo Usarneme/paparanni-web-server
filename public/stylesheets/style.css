@@ -34,9 +34,9 @@ p {
 	color: #3c3c3c;
 	max-width: 70%;
 	text-align: center;
-	margin: 10px auto 5px;
+	margin: 5px auto;
 	font-family: 'Quicksand', sans-serif;
-	padding: 9px;	
+	padding: 5px;	
 }
 
 .caption-text {
@@ -51,7 +51,6 @@ a {
 	color: initial;
 	text-decoration: none;
 	font-family: 'Quicksand', sans-serif;
-	margin: 3px;
 }
 
 a:hover {
@@ -120,6 +119,7 @@ i::before {
 }
 
 .main-container {
+	min-height: 97vh;
 	min-height: calc(98vh - 104px);
 }
 	
@@ -137,6 +137,8 @@ i::before {
 } */
 
 .photos-container {
+	display: flex;
+	flex-wrap: wrap;
 	flex: 5 1 auto;
 }
 
@@ -157,21 +159,31 @@ i::before {
 	align-self: center;
 }
 
+.social-container {
+	display: flex;
+	flex-direction: row;
+	text-align: center;
+	align-items: center;
+	align-self: center;	
+}
+
+.upload-container,
+.profile-container,
+.error-container {
+	padding: 50px;
+}
+
 .font {
 	font-family: 'Quicksand', sans-serif;	
 }
 
-ul#photosContainer,
-.photosContainer {
+ul,
+.photos-container {
 	list-style: none;
-	display: flex;
-	flex-wrap: wrap;
 }
 
 li.photo {
-	/* flex-grow: 1; */
-	padding: 10px;
-	margin: 10px;
+	padding: 5px;
 }
 
 .tags {
@@ -193,7 +205,7 @@ li.photo {
 #lg-fade > a {
 	padding: 5px;
 	min-width: 0; /* flexbox to contain image size */
-	flex: 1 1 45%;
+	flex: 1 1 95%;
 }
 
 #lg-fade > a > img {
@@ -243,7 +255,7 @@ li.photo {
 	font-size: .95rem;
 	margin: 2px;
 	cursor: pointer;
-	border-radius: 10%;
+	border-radius: 4%;
 	padding: 8px;
 	font-weight: 400;
 }
@@ -313,10 +325,9 @@ li.photo {
 @media (min-width: 0) and (max-width: 47em) {
 }
 
-@media (min-width: 48em) { /* 768 */
+@media (min-width: 48em) { /* Typically 768px */
 	#lg-fade > a {
-		/* width: 30vw; */
-		flex: 1 1 30%;
+		flex: 1 1 45%;
 	}
 	.nav-item > a {
 		padding-right: 17px;		
@@ -332,8 +343,7 @@ li.photo {
 
 @media (min-width: 75em) { /* 1200 */
 	#lg-fade > a {
-		/* width: 27vw; */
-		flex: 1 1 22%;
+		flex: 1 1 30%;
 	}
 	.tags-container {
 		padding: 15px;
@@ -349,8 +359,7 @@ li.photo {
 
 @media (min-width: 120em) { /* 1920 */
 	#lg-fade > a {
-		/* width: 22vw; */
-		flex: 1 1 19%;
+		flex: 1 1 22%;
 	}
 	.tags-container {
 		padding: 25px;
