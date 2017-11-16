@@ -209,7 +209,8 @@ li.photo {
 }
 
 #lg-fade > a > img {
-	max-width: 100%; /*or width: 100%; if so the above line won't be required */
+	max-width: 100%; 
+	width: 100%;
     height: auto;
 }
 
