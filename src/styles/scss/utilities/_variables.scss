@@ -1,0 +1,41 @@
+// ======================================
+//  Variables
+// ======================================
+
+$color-primary: #0b3c5d;
+$color-primary-light: lighten($color-primary, 20%);
+$color-primary-dark: darken($color-primary, 20%);
+$color-secondary: #328cc1;
+$color-secondary-light: lighten($color-secondary, 20%);
+$color-secondary-dark: darken($color-secondary, 20%);
+$color-accent: #d9b310;
+$color-shade: mix($color-primary, $color-secondary, 50%);
+$color-bg: #3cc47c;
+$color-bg-light: lighten($color-bg, 20%);
+$color-bg-dark: darken($color-bg, 20%);
+$color-text-primary: black;
+$color-text-secondary: white;
+
+// Fonts
+$font-stack-primary: 'Quicksand', sans-serif;
+$font-stack-secondary: 'Quicksand', serif;
+
+/* EXTRA FONTS we like
+font-family: 'Ubuntu', sans-serif;
+font-family: 'Poiret One', cursive; 
+font-family: 'Economica', sans-serif;
+font-family: 'Rajdhani', sans-serif;
+font-family: 'Jura', sans-serif; 
+font-family: 'Poppins', sans-serif;
+font-family: 'Cabin', sans-serif;
+font-family: 'Quicksand', sans-serif; 
+*/
+
+// Layout
+$max-width: 1920px;
+$gutter: 10px;
+
+// Breakpoints
+$break-s: 48em;
+$break-m: 62em;
+$break-l: 75em;

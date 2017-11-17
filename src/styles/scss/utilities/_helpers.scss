@@ -1,0 +1,19 @@
+// ======================================
+//  Helper Placeholders
+// ======================================
+%clearfix {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+.font {
+	font-family: 'Quicksand', sans-serif;	
+}
+
+.hidden {
+	visibility: hidden;
+	display: none;
+}

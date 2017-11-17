@@ -1,0 +1,21 @@
+// ======================================
+//  Footer Styles
+// ======================================
+
+.footer {
+    @include flexy($disp: flex, $dir: null, $wrap: null, $justify: center, $width: null);
+    height: 100px;
+    background-color: $color-shade;
+	margin: 0;
+    width: 100%;
+    height: 104px;
+    padding: 1rem 0;
+	background: #3c3c3c;
+	text-align: center;
+	align-items:center;
+	align-self: center;
+}
+
+.footer p {
+	color: #ffe;	
+}

@@ -59,3 +59,7 @@ typings/
 
 # image upload directory
 public/images/uploads/
+
+# sass cache and pre-minified css
+.sass-cache
+src/styles/css/
