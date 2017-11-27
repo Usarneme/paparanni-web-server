@@ -22,18 +22,27 @@
 	margin: 0;
 	width: 100%;
 	height: 104px;
-  background: #3c3c3c;
+	background: #3c3c3c;
 	@include flexy($disp: flex, $dir: null, $wrap: null, $justify: space-between, $width: null);
 }
 
 .nav-item {
 	padding: 7px;
+	text-align: center;
 	@include flexy($disp: flex, $dir: null, $wrap: null, $justify: null, $width: null);
-	@include flex-basis(8%);
 	@include align-content(center);
 	@include align-items(center);
 	@include align-self(center);
-	text-align: center;
+	@include mq('m') {
+		@include flex-basis(10%);
+	}
+	@include mq('l') {
+		padding: 10px;
+		@include flex-basis(8%);
+	}
+	@include mq('xl') {
+		@include flex-basis(6%);
+	}
 }
 
 .nav-item,
@@ -42,12 +51,21 @@
 }
 
 .camera-logo {
-	height: 45%;
+	height: 70%;
+	@include mq('m') {
+		height: 60%;
+	}
+}
+
+.name-logo {
+	height: 90%;
 }
 
 .name-link {
-	@include flex-basis(15%);
-	height: 85%;
+	@include mq('m') {
+		@include flex-basis(15%);
+		height: 85%;
+	}
 }
 
 .about-link {
@@ -59,6 +77,11 @@
 .admin {
 	visibility: hidden;
 	display: none;
+	@include mq('l') {
+		visibility: visible;
+		display: block;
+		@include flexy($disp: flex, $dir: null, $wrap: null, $justify: null, $width: null);
+	}
 }
 
 .main-container {
@@ -70,12 +93,11 @@
 	padding: 3px;
 	max-width: 100%;
 	overflow: hidden;
-  @include flexy($disp: flex, $dir: null, $wrap: wrap, $justify: space-around, $width: null);
+	@include flexy($disp: flex, $dir: null, $wrap: wrap, $justify: space-around, $width: null);
+	@include mq('s') {
+		@include flex-wrap(nowrap);
+	}
 }
-
-/* .col {
-	flex: 1 99%;
-} */
 
 .photos-container {
   @include flexy($disp: flex, $dir: null, $wrap: wrap, $justify: null, $width: null);
@@ -88,18 +110,24 @@
 	@include flex(1 29%);
 	@include flex-basis(29%);
 	padding: 3px;
+	@include mq('s') {
+		padding: 15px;		
+	}
+	@include mq('xl') {
+		padding: 25px;		
+	}
 }
 
 .about-container {
 	padding: 80px;
-  @include flexy($disp: flex, $dir: column, $wrap: null, $justify: null, $width: null);
+    @include flexy($disp: flex, $dir: column, $wrap: null, $justify: null, $width: null);
 	text-align: center;
 	align-items: center;
 	align-self: center;
 }
 
 .social-container {
-  @include flexy($disp: flex, $dir: row, $wrap: null, $justify: null, $width: null);
+    @include flexy($disp: flex, $dir: row, $wrap: null, $justify: null, $width: null);
 	text-align: center;
 	align-items: center;
 	align-self: center;	
@@ -130,7 +158,7 @@ li.photo {
 }
 
 #lg-fade {
-  @include flexy($disp: flex, $dir: null, $wrap: wrap, $justify: null, $width: null);
+    @include flexy($disp: flex, $dir: null, $wrap: wrap, $justify: null, $width: null);
 }
 
 #lg-fade > a {
@@ -139,54 +167,27 @@ li.photo {
 	max-height: 205px;
 	@include flex(1 1 95%);
 	overflow: hidden;
+	@include mq('s') {
+		max-width: 50%;
+	}
+	@include mq('l') {
+		max-width: 33%;		
+	}
+	@include mq('xl') {
+		max-width: 25%;		
+	}
 }
 
 #lg-fade > a > img {
 	max-width: 100%; 
 	width: 100%;
 	height: auto;
-	/* max-height: 250px; */
 }
 
 .filter-buttons {
-  @include flexy($disp: flex, $dir: null, $wrap: null, $justify: center, $width: null);
+    @include flexy($disp: flex, $dir: null, $wrap: null, $justify: center, $width: null);
 	text-align: center;
 	align-items:center;
 	align-self: center;
 	margin-top: 20px;
-}
-
-
-@media (min-width: 48em) { /* Typically 768px */
-	#lg-fade > a {
-		max-width: 50%;
-	}
-	.row { 
-		@include flex-wrap(nowrap);
-	}
-}
-
-@media (min-width: 75em) { /* 1200 */
-	#lg-fade > a {
-		max-width: 33%;
-	}
-	.tags-container {
-		padding: 15px;
-	}
-	.nav-item {
-		padding: 10px;
-	}
-	.admin {
-		visibility: visible;
-    @include flexy($disp: flex, $dir: null, $wrap: null, $justify: null, $width: null);
-	}	
-}
-
-@media (min-width: 120em) { /* 1920 */
-	#lg-fade > a {
-		max-width: 25%;
-	}
-	.tags-container {
-		padding: 25px;
-	}	
 }
