@@ -20,7 +20,7 @@ ul {
 a {
   color: $color-text-primary;
   text-decoration: none;
-	font-family: 'Quicksand', sans-serif;
+	font-family: $font-stack-primary;
   &:hover {
     color: $color-text-secondary;
   }
@@ -36,10 +36,9 @@ h3 {
 
 p {
 	color: #3c3c3c;
-	max-width: 70%;
 	text-align: center;
 	margin: 5px auto;
-	font-family: 'Quicksand', sans-serif;
+	font-family: $font-stack-primary;
 	padding: 5px;	
 }
 

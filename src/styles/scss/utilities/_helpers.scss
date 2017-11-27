@@ -9,6 +9,11 @@
   }
 }
 
+.clearfix {
+	content: "";
+	clear: both;
+}
+
 .font {
 	font-family: 'Quicksand', sans-serif;	
 }

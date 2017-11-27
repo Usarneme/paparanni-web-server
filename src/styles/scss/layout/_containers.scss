@@ -23,13 +23,17 @@
 	width: 100%;
 	height: 104px;
   background: #3c3c3c;
-  @include flexy($disp: flex, $dir: null, $wrap: null, $justify: space-between, $width: null);
+	@include flexy($disp: flex, $dir: null, $wrap: null, $justify: space-between, $width: null);
 }
 
 .nav-item {
-  @include flexy($disp: flex, $dir: null, $wrap: null, $justify: null, $width: null);
-	align-items: center;
-	padding: 2px;
+	padding: 7px;
+	@include flexy($disp: flex, $dir: null, $wrap: null, $justify: null, $width: null);
+	@include flex-basis(8%);
+	@include align-content(center);
+	@include align-items(center);
+	@include align-self(center);
+	text-align: center;
 }
 
 .nav-item,
@@ -41,18 +45,15 @@
 	height: 45%;
 }
 
-.name-logo {
+.name-link {
+	@include flex-basis(15%);
 	height: 85%;
 }
 
 .about-link {
-	flex: 1 50%;
-  @include flexy($disp: flex, $dir: null, $wrap: null, $justify: flex-end, $width: null);
-}
-
-.clearfix {
-	content: "";
-	clear: both;
+	@include flex(1 70%);
+	@include flexy($disp: flex, $dir: null, $wrap: null, $justify: flex-end, $width: null);
+	@include flex-basis(70%);
 }
 
 .admin {
@@ -78,15 +79,15 @@
 
 .photos-container {
   @include flexy($disp: flex, $dir: null, $wrap: wrap, $justify: null, $width: null);
-	flex: 5 1 auto;
+	@include flex(1 70%);
+	@include flex-basis(70%);
+	padding: 3px;	
 }
 
 .tags-container {
-	padding: 5px;
-}
-
-.profile h1 {
-	color: #3c3c3c;
+	@include flex(1 29%);
+	@include flex-basis(29%);
+	padding: 3px;
 }
 
 .about-container {
@@ -136,7 +137,7 @@ li.photo {
 	padding: 5px;
 	min-width: 0; /* flexbox to contain image size */
 	max-height: 205px;
-	flex: 1 1 95%;
+	@include flex(1 1 95%);
 	overflow: hidden;
 }
 
@@ -160,16 +161,9 @@ li.photo {
 	#lg-fade > a {
 		max-width: 50%;
 	}
-	.nav-item > a {
-		padding-right: 17px;		
-	}
 	.row { 
-		flex-wrap: nowrap;
+		@include flex-wrap(nowrap);
 	}
-	.nav-item {
-		padding: 7px 14px;
-		justify-content: flex-end;
-	}		
 }
 
 @media (min-width: 75em) { /* 1200 */
@@ -180,7 +174,7 @@ li.photo {
 		padding: 15px;
 	}
 	.nav-item {
-		padding: 7px 20px;
+		padding: 10px;
 	}
 	.admin {
 		visibility: visible;

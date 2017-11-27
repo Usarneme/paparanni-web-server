@@ -14,13 +14,13 @@ $color-bg: #3cc47c;
 $color-bg-light: lighten($color-bg, 20%);
 $color-bg-dark: darken($color-bg, 20%);
 $color-text-primary: black;
-$color-text-secondary: white;
+$color-text-secondary: #3c3c3c;
 
 // Fonts
 $font-stack-primary: 'Quicksand', sans-serif;
 $font-stack-secondary: 'Quicksand', serif;
 
-/* EXTRA FONTS we like
+/* EXTRA FONTS 
 font-family: 'Ubuntu', sans-serif;
 font-family: 'Poiret One', cursive; 
 font-family: 'Economica', sans-serif;
