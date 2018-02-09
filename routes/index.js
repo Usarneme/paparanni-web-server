@@ -203,34 +203,8 @@ router.get('/about', function(req, res, next) {
   return res.render('about', { title: 'About' });  
 });
 
-// POST /
-// Filters photos with tags specified from tagList POST request
-router.post('/', function(req, res, next) {
-  if(req.body.tagList) {
-    var tagArray = req.body.tagList.split(/[ ,]+/).filter(Boolean);
-    Photo.find({ tags: {$in: tagArray} 
-    }, (err, photos) => {
-      if(err) {
-        err.message = 'Server error finding image tags.';
-        return next(err);
-      }
-      if(!photos) {
-        var err = new Error('No images have those tags.');
-        err.status = 404;
-        return next(err);
-      }
-      // Remove empty taglists
-      tagArray = tagArray.join().split(/[ ,]+/).filter(Boolean);
-      var uniqueTags = Array.from(new Set(tagArray));
-      return res.render('index', { title: 'Home', photos: photos, tags: uniqueTags });
-    });
-  } else {
-    return res.redirect('/');
-  }
-});
-
 // REST API returns JSON data or error
-router.get('api', function(req, res, next) {
+router.get('/api', function(req, res, next) {
   Photo.find(function(err, photos) {
     if (err) {
       err.message = 'Server Error locating images.';
@@ -258,6 +232,32 @@ router.get('api', function(req, res, next) {
       tags: uniqueTags
     });
   });
+});
+
+// POST /
+// Filters photos with tags specified from tagList POST request
+router.post('/', function(req, res, next) {
+  if(req.body.tagList) {
+    var tagArray = req.body.tagList.split(/[ ,]+/).filter(Boolean);
+    Photo.find({ tags: {$in: tagArray} 
+    }, (err, photos) => {
+      if(err) {
+        err.message = 'Server error finding image tags.';
+        return next(err);
+      }
+      if(!photos) {
+        var err = new Error('No images have those tags.');
+        err.status = 404;
+        return next(err);
+      }
+      // Remove empty taglists
+      tagArray = tagArray.join().split(/[ ,]+/).filter(Boolean);
+      var uniqueTags = Array.from(new Set(tagArray));
+      return res.render('index', { title: 'Home', photos: photos, tags: uniqueTags });
+    });
+  } else {
+    return res.redirect('/');
+  }
 });
 
 // GET / 
