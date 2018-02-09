@@ -226,10 +226,11 @@ router.get('/api', function(req, res, next) {
     // Remove empty taglists
     allTags = allTags.join().split(/[ ,]+/).filter(Boolean);
     var uniqueTags = Array.from(new Set(allTags));
+
     return res.json({
-      title: 'Home',
-      photos: photos,
-      tags: uniqueTags
+      title: "API",
+      photos: "photos",
+      tags: "uniqueTags"
     });
   });
 });
