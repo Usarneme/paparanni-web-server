@@ -229,6 +229,37 @@ router.post('/', function(req, res, next) {
   }
 });
 
+// REST API returns JSON data or error
+router.get('api', function(req, res, next) {
+  Photo.find(function(err, photos) {
+    if (err) {
+      err.message = 'Server Error locating images.';
+      return next(err);
+    }
+    if (!photos) {
+      var err = new Error('No photos in the set.');
+      err.status = 404;
+      return next(err);
+    }
+    var allTags = [];
+    for(let i=0; i<photos.length; i++) {
+      if(photos[i].tags) {
+        photos[i].tags.forEach(function(tag) {
+          allTags.push(tag);
+        })
+      }
+    }
+    // Remove empty taglists
+    allTags = allTags.join().split(/[ ,]+/).filter(Boolean);
+    var uniqueTags = Array.from(new Set(allTags));
+    return res.json({
+      title: 'Home',
+      photos: photos,
+      tags: uniqueTags
+    });
+  });
+});
+
 // GET / 
 router.get('/', function(req, res, next) {
   Photo.find(function(err, photos) {
