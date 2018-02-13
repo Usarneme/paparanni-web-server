@@ -205,6 +205,7 @@ router.get('/about', function(req, res, next) {
 
 // REST API returns JSON data or error
 router.get('/api', function(req, res, next) {
+
   Photo.find(function(err, photos) {
     if (err) {
       err.message = 'Server Error locating images.';
@@ -215,6 +216,7 @@ router.get('/api', function(req, res, next) {
       err.status = 404;
       return next(err);
     }
+    // Collection of all tags from all photos (used for filtering)
     var allTags = [];
     for(let i=0; i<photos.length; i++) {
       if(photos[i].tags) {
@@ -227,12 +229,9 @@ router.get('/api', function(req, res, next) {
     allTags = allTags.join().split(/[ ,]+/).filter(Boolean);
     var uniqueTags = Array.from(new Set(allTags));
 
-    return res.json({
-      title: "API",
-      photos: "photos",
-      tags: "uniqueTags"
-    });
+    return res.json({title: 'API v1.0', photos: photos, tags: uniqueTags});
   });
+
 });
 
 // POST /
