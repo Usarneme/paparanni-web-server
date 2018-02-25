@@ -4,6 +4,9 @@ const router = express.Router();
 const User = require('../models/user');
 const Photo = require('../models/photo');
 const mid = require('../middleware');
+
+const cors = require('cors');
+
 const fs = require('fs');
 const childProcess = require('child_process');
 const multer = require('multer');
@@ -204,7 +207,7 @@ router.get('/about', function(req, res, next) {
 });
 
 // REST API returns JSON data or error
-router.get('/api', function(req, res, next) {
+router.get('/api', cors(), function(req, res, next) {
 
   Photo.find(function(err, photos) {
     if (err) {
