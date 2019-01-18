@@ -9,8 +9,9 @@
     "build": "minify --source-map --output public/stylesheets/style.min.css src/styles/css/style.css"
   },
   "dependencies": {
-    "bcrypt": "^0.8.7",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",
+    "bson": "^4.0.1",
     "busboy": "^0.2.14",
     "compression": "^1.7.3",
     "connect-mongo": "^1.2.1",
