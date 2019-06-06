@@ -85,6 +85,7 @@ i::before {
 
 .camera-logo {
 	height: 45%;
+	max-width: 130px;
 }
 
 .name-logo {
