@@ -20,7 +20,7 @@
     "express-session": "^1.13.0",
     "forever": "^1.0.0",
     "fs": "0.0.1-security",
-    "mongoose": "^4.13.17",
+    "mongoose": "^5.7.5",
     "multer": "^1.4.1",
     "pug": "^2.0.3"
   },
