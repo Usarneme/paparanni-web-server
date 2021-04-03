@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3001
 const app = express()
 
 // DATABASE
-const MONGODB_URI = process.env.MONGO_UR || 'mongodb://localhost/paparanni'
+const MONGODB_URI = process.env.MONGO_URI || 'mongodb://localhost/paparanni'
 // const db = require('./models')
 const mongoose = require('mongoose')
 mongoose.set('useNewUrlParser', true)
