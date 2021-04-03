@@ -15,7 +15,6 @@ const mongoose = require('mongoose')
 mongoose.set('useNewUrlParser', true)
 mongoose.set('useFindAndModify', false)
 mongoose.set('useCreateIndex', true)
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 
 
 // Use gzip compression for serving files (where available/supported)
@@ -31,10 +30,10 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true 
 // }));
 
 // make user ID available in templates
-app.use(function (req, res, next) {
-  res.locals.currentUser = req.session.userId;
-  next();
-});
+// app.use(function (req, res, next) {
+//   res.locals.currentUser = req.session.userId;
+//   next();
+// });
 
 // parse incoming requests
 app.use(bodyParser.json());
@@ -48,8 +47,11 @@ app.set('view engine', 'pug');
 app.set('views', __dirname + '/views');
 
 // include routes
-const routes = require('./routes/index');
-app.use('/', routes);
+// OLD
+// const routes = require('./routes/index');
+// app.use('/', routes);
+// NEW
+require('./routes')(app)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -66,6 +68,8 @@ app.use(function(err, req, res, next) {
     error: err
   });
 });
+
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 
 app.listen(PORT, () => {
   console.log(`Express app listening on port ${PORT}`);
