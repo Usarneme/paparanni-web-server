@@ -9,7 +9,7 @@
     "build": "minify --source-map --output public/stylesheets/style.min.css src/styles/css/style.css"
   },
   "dependencies": {
-    "bcrypt-nodejs": "*",
+    "bcrypt": "^5.0.1",
     "body-parser": "*",
     "bson": "*",
     "busboy": "*",

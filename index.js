@@ -2,6 +2,8 @@
 // const compression = require('compression')
 const express = require('express')
 const bodyParser = require('body-parser')
+const session = require('express-session')
+const MongoStore = require('connect-mongo')
 const PORT = process.env.PORT || 3001
 const app = express()
 
@@ -13,24 +15,26 @@ mongoose.set('useNewUrlParser', true)
 mongoose.set('useFindAndModify', false)
 mongoose.set('useCreateIndex', true)
 
-
 // Use gzip compression for serving files (where available/supported)
 // app.use(compression())
 
-// app.use(session({
-//   secret: 'sekret',
-//   resave: true,
-//   saveUninitialized: false,
-//   store: new MongoStore({
-//     mongooseConnection: db
-//   })
-// }));
+app.use(session({
+  secret: 'sekret',
+  resave: true,
+  saveUninitialized: false,
+  store: MongoStore.create({ mongoUrl: MONGODB_URI })
+}));
 
 // make user ID available in templates
-// app.use(function (req, res, next) {
-//   res.locals.currentUser = req.session.userId;
-//   next();
-// });
+app.use(function (req, res, next) {
+  console.log("RES LOCALS MID")
+  console.log(req.sessionID)
+  // OLD
+  // res.locals.currentUser = req.session.userId;
+  // NEW
+  res.locals.currentUser = req.sessionID;
+  next();
+});
 
 // parse incoming requests
 app.use(bodyParser.json());
