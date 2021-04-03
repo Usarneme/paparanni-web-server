@@ -1,10 +1,7 @@
 'use strict';
-// const express = require('express');
-// const router = express.Router();
 const User = require('../models/user');
 const Photo = require('../models/photo');
 const mid = require('../middleware');
-
 const cors = require('cors');
 
 const fs = require('fs');
@@ -34,7 +31,7 @@ var imageFilter = function (req, file, cb) {
 };
 // Sets the storage prop to the above-defined name and directory settings
 // Sets the upload config to handle one file at a time with a form field 'name' = 'upl' 
-var upload = multer({ 
+var upload = multer({
   storage: storage,
   fileFilter: imageFilter
 }).single('upl');

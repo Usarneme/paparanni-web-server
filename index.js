@@ -5,9 +5,6 @@ const bodyParser = require('body-parser')
 const PORT = process.env.PORT || 3001
 const app = express()
 
-// const path = require('path')
-// const session = require('express-session')
-
 // DATABASE
 const MONGODB_URI = process.env.MONGO_UR || 'mongodb://localhost/paparanni'
 // const db = require('./models')
@@ -47,10 +44,6 @@ app.set('view engine', 'pug');
 app.set('views', __dirname + '/views');
 
 // include routes
-// OLD
-// const routes = require('./routes/index');
-// app.use('/', routes);
-// NEW
 require('./routes')(app)
 
 // catch 404 and forward to error handler
