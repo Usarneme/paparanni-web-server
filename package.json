@@ -5,27 +5,28 @@
   "author": "Tom Geraghty/Usarneme",
   "private": true,
   "scripts": {
-    "start": "node ./app",
+    "start": "node ./index",
     "build": "minify --source-map --output public/stylesheets/style.min.css src/styles/css/style.css"
   },
   "dependencies": {
-    "bcrypt-nodejs": "0.0.3",
-    "body-parser": "^1.18.3",
-    "bson": "^4.0.1",
-    "busboy": "^0.2.14",
-    "compression": "^1.7.3",
-    "connect-mongo": "^1.2.1",
-    "cors": "^2.8.4",
-    "express": "^4.16.4",
-    "express-session": "^1.13.0",
-    "forever": "^1.0.0",
-    "fs": "0.0.1-security",
-    "mongoose": "^4.13.17",
-    "multer": "^1.4.1",
-    "pug": "^2.0.3"
+    "bcrypt-nodejs": "*",
+    "body-parser": "*",
+    "bson": "*",
+    "busboy": "*",
+    "compression": "*",
+    "connect-mongo": "*",
+    "cors": "*",
+    "express": "*",
+    "express-session": "*",
+    "forever": "*",
+    "fs": "*",
+    "mongodb": "^3.6.5",
+    "mongoose": "*",
+    "multer": "*",
+    "pug": "*"
   },
   "license": "MIT",
   "devDependencies": {
-    "terser": "^4.0.0"
+    "terser": "*"
   }
 }

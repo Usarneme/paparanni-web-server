@@ -1,30 +1,34 @@
-'use strict';
-var compression = require('compression')
-var express = require('express');
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-var session = require('express-session');
-var MongoStore = require('connect-mongo')(session);
-var app = express();
+// 'use strict';
+// const compression = require('compression')
+const express = require('express')
+const bodyParser = require('body-parser')
+const PORT = process.env.PORT || 3001
+const app = express()
 
-mongoose.connect("mongodb://localhost:27017/paparanni");
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'Database connection error:'));
-// Use native promises
-mongoose.Promise = global.Promise;
-// assert.equal(query.exec().constructor, global.Promise);
+// const path = require('path')
+// const session = require('express-session')
+
+// DATABASE
+const MONGODB_URI = process.env.MONGO_UR || 'mongodb://localhost/paparanni'
+// const db = require('./models')
+const mongoose = require('mongoose')
+mongoose.set('useNewUrlParser', true)
+mongoose.set('useFindAndModify', false)
+mongoose.set('useCreateIndex', true)
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+
 
 // Use gzip compression for serving files (where available/supported)
-app.use(compression())
+// app.use(compression())
 
-app.use(session({
-  secret: 'sekret',
-  resave: true,
-  saveUninitialized: false,
-  store: new MongoStore({
-    mongooseConnection: db
-  })
-}));
+// app.use(session({
+//   secret: 'sekret',
+//   resave: true,
+//   saveUninitialized: false,
+//   store: new MongoStore({
+//     mongooseConnection: db
+//   })
+// }));
 
 // make user ID available in templates
 app.use(function (req, res, next) {
@@ -43,13 +47,13 @@ app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/views');
 
-// include routes 
-var routes = require('./routes/index');
+// include routes
+const routes = require('./routes/index');
 app.use('/', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('File Not Found');
+  const err = new Error('File Not Found');
   err.status = 404;
   next(err);
 });
@@ -63,6 +67,6 @@ app.use(function(err, req, res, next) {
   });
 });
 
-app.listen(3000, function () {
-  console.log('Express app listening on port 3000');
+app.listen(PORT, () => {
+  console.log(`Express app listening on port ${PORT}`);
 });
