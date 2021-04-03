@@ -67,21 +67,6 @@ module.exports = function(app) {
     }
   });
 
-  // REGISTER new admin
-  app.post('/register', async function(req, res) {
-    console.log("hit register route")
-    console.log(req.body)
-    User.create({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password
-    }, function(err, response) {
-      if (err) console.log(err)
-      console.log("registered successfully!")
-      console.log(response)
-    })
-  })
-
   // GET /login
   app.get('/login', mid.loggedOut, function(req, res, next) {
     return res.render('login', { title: 'Log In'});
