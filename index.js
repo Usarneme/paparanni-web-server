@@ -27,12 +27,7 @@ app.use(session({
 
 // make user ID available in templates
 app.use(function (req, res, next) {
-  console.log("RES LOCALS MID")
-  console.log(req.sessionID)
-  // OLD
-  // res.locals.currentUser = req.session.userId;
-  // NEW
-  res.locals.currentUser = req.sessionID;
+  res.locals.currentUser = req.session.userId;
   next();
 });
 
